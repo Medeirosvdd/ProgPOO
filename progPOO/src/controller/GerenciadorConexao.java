@@ -25,29 +25,29 @@ public class GerenciadorConexao {
         }
     }
 
-    public PreparedStatement prepararComando (String sql){
+    public PreparedStatement prepararComando(String sql) {
         PreparedStatement comando = null;
-        
-        try{
+
+        try {
             comando = conexao.prepareStatement(sql);
-        }catch (SQLException erro){
+        } catch (SQLException erro) {
             JOptionPane.showMessageDialog(null, "Erro ao preparar comando: " + erro);
         }
         return comando;
-        
+
     }
- 
-    public void fecharconexao(){
+
+    public void fecharConexao() {
         try {
             if (conexao != null) {
                 conexao.close();
-        }
-        }catch (SQLException erro) {
+            }
+        } catch (SQLException erro) {
             Logger.getLogger(GerenciadorConexao.class.getName()).log(Level.SEVERE, null, erro);
         }
     }
 
-  public void fecharConexao(PreparedStatement comando) {
+    public void fecharConexao(PreparedStatement comando) {
         fecharConexao();
 
         try {
@@ -56,19 +56,18 @@ public class GerenciadorConexao {
             }
         } catch (SQLException erro) {
             Logger.getLogger(GerenciadorConexao.class.getName())
-                  .log(Level.SEVERE, null, erro);
+                    .log(Level.SEVERE, null, erro);
         }
     }
 
-    
-    public void fecharConexao (PreparedStatement comando, resulSet resultado)
-            fecharConexao(Comando);
-    try{
-    if (resultado != null){
-        resultado.close();
+    public void fecharConexao(PreparedStatement comando, ResultSet resultado) {
+        fecharConexao(comando);
+        try {
+            if (resultado != null) {
+                resultado.close();
+            }
+        } catch (SQLException erro) {
+            Logger.getLogger(GerenciadorConexao.class.getName()).log(Level.SEVERE, null, erro);
+        }
     }
-}catch (SQLException erro) {
-    Logger.getLogger(GerenciadorConexao.class.getName()).log(Level.SEVERE, null, erro);
-}
-    
 }

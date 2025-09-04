@@ -5,6 +5,13 @@
  */
 package view;
 
+import controller.UsuarioController;
+import java.awt.event.KeyEvent;
+import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import utils.Util;
+
 /**
  *
  * @author Administrador
@@ -40,6 +47,11 @@ public class FrLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         pnlPrincipal.setBackground(new java.awt.Color(51, 255, 255));
         pnlPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,6 +89,11 @@ public class FrLogin extends javax.swing.JFrame {
                 btnEntrarActionPerformed(evt);
             }
         });
+        btnEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnEntrarKeyPressed(evt);
+            }
+        });
         pnlPrincipal.add(btnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, -1, -1));
 
         lblLogin.setFont(new java.awt.Font("Yu Gothic", 1, 36)); // NOI18N
@@ -109,10 +126,20 @@ public class FrLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_edtUsuarioActionPerformed
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-
+         logar();
 
 
     }//GEN-LAST:event_btnEntrarMouseClicked
+
+    private void btnEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEntrarKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            logar();
+        }
+    }//GEN-LAST:event_btnEntrarKeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(Util.getIcone());
+    }//GEN-LAST:event_formWindowOpened
 
     
     private void logar(){
@@ -125,9 +152,21 @@ public class FrLogin extends javax.swing.JFrame {
     //guardar os dados
     
     //consultar no banco de dados
+    UsuarioController controller = new UsuarioController();
+    
+    if (controller.autenticar(usuario, senha)){
+        FrMenu telaMenu = new FrMenu();
+        telaMenu.setVisible(true);
+        this.setVisible(false);
+    }else {
+        JOptionPane.showMessageDialog(rootPane, "Usuario não encontrado");
+    }
+    
     
     // verificar se tem ou nãoaquele usuario
-        
+     
+    
+    
     }
     
     /**
