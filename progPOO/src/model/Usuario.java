@@ -17,13 +17,13 @@ import javax.swing.JOptionPane;
  * @author Administrador
  */
 public class Usuario {
-    
+
     private String nome;
     private String email;
     private String senha;
     private Date dataNascimento;
     private boolean ativo;
-   
+
     private int pkUsuario;
 
     public Usuario(int pkUsuario, String nome, String email, String senha, Date dataNascimento, boolean ativo) {
@@ -34,7 +34,6 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
         this.ativo = ativo;
     }
-    
 
     public Usuario() {
 
@@ -88,4 +87,11 @@ public class Usuario {
         this.ativo = ativo;
     }
 
+    public String getAtivoString() {
+        if (ativo) {
+            return "ativo";
+        } else {
+            return "Inativo";
+        }
+    }
 }

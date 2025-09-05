@@ -51,7 +51,7 @@ public class UsuarioController {
     }
 
     public boolean inserir(Usuario usu) {
-        String sql = "INSERT INTO TBUSUARIO (nome, email, senha, datanasc, ativo)" + "values (?????)";
+        String sql = "INSERT INTO TBUSUARIO (nome, email, senha, datanasc, ativo)" + "values (?, ?, ?, ?, ?)";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
 
@@ -78,6 +78,44 @@ public class UsuarioController {
             gerenciador.fecharConexao(comando, resultado);
         }
         return false;
+    }
+
+    public List<Usuario> consultar() {
+        String sql = "SELECT * FROM TBUSUARIO";
+
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+
+        PreparedStatement comando = null;
+        ResultSet resultado = null;
+
+        List<Usuario> lista = new ArrayList<>();
+
+        try {
+
+            comando = gerenciador.prepararComando(sql);
+
+            resultado = comando.executeQuery();
+
+            while (resultado.next()) {
+                Usuario usu = new Usuario();
+
+                usu.setPkUsuario(resultado.getInt("pkUsuario"));
+                usu.setNome(resultado.getString("nome"));
+                usu.setEmail(resultado.getString("email"));
+                usu.setSenha(resultado.getString("senha"));
+                usu.setDataNascimento(resultado.getDate("datanasc"));
+                usu.setAtivo(resultado.getBoolean("ativo"));
+
+                lista.add(usu);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+
+        } finally {
+            gerenciador.fecharConexao(comando, resultado);
+        }
+        return lista;
     }
 
 }

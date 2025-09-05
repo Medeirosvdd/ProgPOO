@@ -126,13 +126,13 @@ public class FrLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_edtUsuarioActionPerformed
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-         logar();
+        logar();
 
 
     }//GEN-LAST:event_btnEntrarMouseClicked
 
     private void btnEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEntrarKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             logar();
         }
     }//GEN-LAST:event_btnEntrarKeyPressed
@@ -141,34 +141,43 @@ public class FrLogin extends javax.swing.JFrame {
         this.setIconImage(Util.getIcone());
     }//GEN-LAST:event_formWindowOpened
 
-    
-    private void logar(){
-    //ler campos
-    String usuario = edtUsuario.getText();
-    
-    String senha = new String(edtSenha.getPassword());
-    
-    
-    //guardar os dados
-    
-    //consultar no banco de dados
-    UsuarioController controller = new UsuarioController();
-    
-    if (controller.autenticar(usuario, senha)){
-        FrMenu telaMenu = new FrMenu();
-        telaMenu.setVisible(true);
-        this.setVisible(false);
-    }else {
-        JOptionPane.showMessageDialog(rootPane, "Usuario não encontrado");
+    private boolean verificarCampos() {
+        if (edtUsuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Usuario em branco");
+            return false;
+        }
+        if (new String(edtSenha.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog (null, "Senha em branco");
+        return false;
+        }
+        return true;
     }
-    
-    
-    // verificar se tem ou nãoaquele usuario
-     
-    
-    
+
+    private void logar() {
+
+        if (!verificarCampos()) {
+            return;
+        }
+//ler campos
+        String usuario = edtUsuario.getText();
+        String senha = Util.calcularHash(new String(edtSenha.getPassword()));
+
+        //guardar os dados
+        
+        //consultar no banco de dados
+        UsuarioController controller = new UsuarioController();
+
+        if (controller.autenticar(usuario, senha)) {
+            FrMenu telaMenu = new FrMenu();
+            telaMenu.setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Usuario não encontrado");
+        }
+
+        // verificar se tem ou nãoaquele usuario
     }
-    
+
     /**
      * @param args the command line arguments
      */

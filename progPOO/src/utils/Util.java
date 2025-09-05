@@ -10,7 +10,6 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import java.security.NoSuchAlgorithmException;
 
-
 public class Util {
 
     public static Image getIcone() {
@@ -54,4 +53,17 @@ public class Util {
         }
         return hashSHA1;
     }
+
+    public static String converterDataToString(Date data) {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/mm/yyyy");
+        String texto = "";
+        
+        try {
+            texto = formato.format(data);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao formatar a data");
+        }
+        return texto;
+    }
+
 }
