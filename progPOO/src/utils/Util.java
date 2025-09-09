@@ -1,6 +1,5 @@
 package utils;
 
-import com.sun.istack.internal.logging.Logger;
 import java.awt.Graphics2D;
 import java.net.URL;
 import javax.swing.ImageIcon;
@@ -16,6 +15,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.JFileChooser;

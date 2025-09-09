@@ -7,10 +7,12 @@ package view;
 
 import controller.UsuarioController;
 import java.awt.Color;
+import java.io.File;
 import javax.swing.JOptionPane;
 import model.Usuario;
 import utils.Util;
 import java.util.List;
+import javax.swing.Icon;
 
 /**
  *
@@ -59,6 +61,9 @@ public class FrAltUsuario extends javax.swing.JDialog {
         lblCodigo = new javax.swing.JLabel();
         edtCodigo = new javax.swing.JTextField();
         btnAlterarSenha = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        imgFoto = new javax.swing.JLabel();
+        btnImagem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alteração de Usuário - Projeto POO");
@@ -77,19 +82,19 @@ public class FrAltUsuario extends javax.swing.JDialog {
 
         lblNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblNome.setText("Nome");
-        pnlPrincipal.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        pnlPrincipal.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
 
         lblEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblEmail.setText("E-mail");
-        pnlPrincipal.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        pnlPrincipal.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, -1));
 
         lblSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblSenha.setText("Senha");
-        pnlPrincipal.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        pnlPrincipal.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
 
         lblDataNascimento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblDataNascimento.setText("Data Nascimento");
-        pnlPrincipal.add(lblDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, 20));
+        pnlPrincipal.add(lblDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, -1, 20));
 
         btnSalvar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/save.png"))); // NOI18N
@@ -99,43 +104,43 @@ public class FrAltUsuario extends javax.swing.JDialog {
                 btnSalvarMouseClicked(evt);
             }
         });
-        pnlPrincipal.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 130, -1));
+        pnlPrincipal.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, 130, -1));
 
         edtEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        pnlPrincipal.add(edtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 250, -1));
+        pnlPrincipal.add(edtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 250, -1));
 
         edtNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        pnlPrincipal.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 250, -1));
+        pnlPrincipal.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 250, -1));
 
         edtSenha.setEditable(false);
         edtSenha.setBackground(new java.awt.Color(204, 204, 204));
         edtSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        pnlPrincipal.add(edtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 170, -1));
+        pnlPrincipal.add(edtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 170, -1));
 
         edtDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
         edtDataNascimento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        pnlPrincipal.add(edtDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 120, -1));
+        pnlPrincipal.add(edtDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 120, -1));
 
         chkAtivo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         chkAtivo.setText("Ativo");
-        pnlPrincipal.add(chkAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, -1, -1));
+        pnlPrincipal.add(chkAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 490, -1, -1));
 
         lblConfirmeSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblConfirmeSenha.setText("Confirme a senha");
-        pnlPrincipal.add(lblConfirmeSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+        pnlPrincipal.add(lblConfirmeSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
 
         edtConfirmeSenha.setEditable(false);
         edtConfirmeSenha.setBackground(new java.awt.Color(204, 204, 204));
         edtConfirmeSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        pnlPrincipal.add(edtConfirmeSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 170, -1));
+        pnlPrincipal.add(edtConfirmeSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 170, -1));
 
         lblCodigo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblCodigo.setText("Código");
-        pnlPrincipal.add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
+        pnlPrincipal.add(lblCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
         edtCodigo.setEditable(false);
         edtCodigo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        pnlPrincipal.add(edtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 90, -1));
+        pnlPrincipal.add(edtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 90, -1));
 
         btnAlterarSenha.setText("Alterar Senha");
         btnAlterarSenha.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -143,7 +148,26 @@ public class FrAltUsuario extends javax.swing.JDialog {
                 btnAlterarSenhaMouseClicked(evt);
             }
         });
-        pnlPrincipal.add(btnAlterarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 120, 30));
+        pnlPrincipal.add(btnAlterarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 120, 30));
+
+        jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(imgFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 110));
+
+        pnlPrincipal.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 120, 110));
+
+        btnImagem.setText("Escolher Imagem");
+        btnImagem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnImagemMouseClicked(evt);
+            }
+        });
+        btnImagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImagemActionPerformed(evt);
+            }
+        });
+        pnlPrincipal.add(btnImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 130, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,9 +177,7 @@ public class FrAltUsuario extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(pnlPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
         );
 
         pack();
@@ -206,7 +228,25 @@ public class FrAltUsuario extends javax.swing.JDialog {
     edtDataNascimento.setText(
     Util.converterDateToString(usu.getDataNascimento()));
     chkAtivo.setSelected(usu.isAtivo());
+    imgFoto.setIcon(usu.getImagem());
   }//GEN-LAST:event_formWindowOpened
+
+    private void btnImagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnImagemMouseClicked
+        File arquivo = Util.escolherImagem();
+
+        if (arquivo != null){
+            Icon icone = Util.convertFileToIcon(arquivo);
+
+            Icon iconeNovo = Util.redimensionarImagem(icone, 120, 110);
+
+            imgFoto.setIcon(iconeNovo);
+        }
+
+    }//GEN-LAST:event_btnImagemMouseClicked
+
+    private void btnImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImagemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnImagemActionPerformed
 
   private void gravar() {
     //validar o preenchimento dos campos
@@ -219,6 +259,7 @@ public class FrAltUsuario extends javax.swing.JDialog {
     usu.setPkUsuario(Integer.parseInt(edtCodigo.getText()));
     usu.setNome(edtNome.getText());
     usu.setEmail(edtEmail.getText());
+    usu.setImagem(imgFoto.getIcon());
     if(edtSenha.isEditable()){
       usu.setSenha(Util.calcularHash(new String(edtSenha.getPassword())));
     }
@@ -333,6 +374,7 @@ public class FrAltUsuario extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterarSenha;
+    private javax.swing.JButton btnImagem;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JCheckBox chkAtivo;
     private javax.swing.JTextField edtCodigo;
@@ -341,6 +383,8 @@ public class FrAltUsuario extends javax.swing.JDialog {
     private javax.swing.JTextField edtEmail;
     private javax.swing.JTextField edtNome;
     private javax.swing.JPasswordField edtSenha;
+    private javax.swing.JLabel imgFoto;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblConfirmeSenha;
     private javax.swing.JLabel lblDataNascimento;
