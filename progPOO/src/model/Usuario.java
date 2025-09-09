@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +24,7 @@ public class Usuario {
     private String senha;
     private Date dataNascimento;
     private boolean ativo;
+    private Icon imagem;
 
     private int pkUsuario;
 
@@ -94,4 +96,13 @@ public class Usuario {
             return "Inativo";
         }
     }
+
+    public Icon getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(Icon imagem) {
+        this.imagem = imagem;
+    }
+
 }
