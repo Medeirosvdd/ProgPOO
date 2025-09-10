@@ -171,9 +171,12 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="edtFiltro">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtFiltroActionPerformed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="233" y="81" width="180" height="-1"/>
+              <AbsoluteConstraints x="230" y="80" width="180" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

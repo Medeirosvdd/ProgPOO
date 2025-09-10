@@ -129,7 +129,13 @@ public class FrConUsuario extends javax.swing.JDialog {
         jScrollPane2.setViewportView(tblUsuarios);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 109, -1, 173));
-        jPanel1.add(edtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 81, 180, -1));
+
+        edtFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtFiltroActionPerformed(evt);
+            }
+        });
+        jPanel1.add(edtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 180, -1));
 
         cbxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Código igual a", "Nome contendo", "E-mail contendo", "Usuarios Ativos" }));
         cbxFiltro.addActionListener(new java.awt.event.ActionListener() {
@@ -191,6 +197,10 @@ public class FrConUsuario extends javax.swing.JDialog {
         telaAlterar.setPkUsuario(pkUsuario);
         telaAlterar.setVisible(true);
     }//GEN-LAST:event_btnAlterarMouseClicked
+
+    private void edtFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtFiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtFiltroActionPerformed
 
     private void pesquisar() {
         DefaultTableModel modeloTabela = (DefaultTableModel) tblUsuarios.getModel();
